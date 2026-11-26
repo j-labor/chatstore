@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GH Max Davao – Shop &amp; Ask Max</title>
+<style>
+:root{--bg:#f2f4f8;--sf:#fff;--sf2:#f6f7fa;--ink:#0e1a30;--mute:#5d6a80;--line:#e1e5ec;--navy:#0e1a30;--amber:#f5b400;--on-navy:#fff;--blue:#1f5eff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1220;--sf:#121c2f;--sf2:#18243a;--ink:#eef2f9;--mute:#9aa8c0;--line:#243250;--navy:#1b2b4a;--blue:#7da4ff}}
+:root[data-theme="dark"]{--bg:#0a1220;--sf:#121c2f;--sf2:#18243a;--ink:#eef2f9;--mute:#9aa8c0;--line:#243250;--navy:#1b2b4a;--blue:#7da4ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 "Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--sf);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:10px 16px}
+.logo{width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--amber);font-weight:800;font-size:12px;display:grid;place-items:center}
+.brand b{display:block;font-size:15px}.brand span{color:var(--mute);font-size:12px}
+.sp{flex:1}
+.basket{background:var(--navy);color:var(--on-navy);border:0;border-radius:99px;padding:8px 14px;font-weight:700;display:flex;gap:8px;align-items:center}
+.basket i{font-style:normal;background:var(--amber);color:#0e1a30;border-radius:99px;padding:0 8px;font-size:12px}
+.wrap{display:grid;grid-template-columns:1fr;max-width:1320px;margin:0 auto}
+@media(min-width:960px){.wrap{grid-template-columns:1fr 390px}}
+main{padding:16px;min-width:0}
+.cats{position:sticky;top:calc(56px + env(safe-area-inset-top,0px));z-index:10;background:var(--bg);padding:6px 0 12px;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--sf);border-radius:99px;padding:8px 14px;font-weight:600;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.sec h2{font-size:17px;margin:18px 0 10px;display:flex;align-items:baseline;gap:8px}
+.sec h2 small{color:var(--mute);font-weight:500;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
+.card{background:var(--sf);border:1px solid var(--line);border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.ph{height:96px;border-radius:10px;background:var(--sf2);display:grid;place-items:center;font-size:42px}
+.card h3{margin:0;font-size:13.5px;line-height:1.3;min-height:35px}
+.price{font-weight:800;font-size:15px}
+.row{display:flex;gap:6px}
+select{flex:1;min-width:0;border:1px solid var(--line);background:var(--sf2);color:var(--ink);border-radius:8px;padding:6px}
+.add{background:var(--amber);color:#0e1a30;border:0;border-radius:8px;padding:6px 12px;font-weight:800}
+.ask{background:none;border:0;color:var(--blue);padding:0;font-size:12px;text-align:left;font-weight:600}
+/* chat */
+aside{display:none;position:sticky;top:calc(56px + env(safe-area-inset-top,0px));height:calc(100vh - 56px);padding:16px 16px 16px 0}
+@media(min-width:960px){aside{display:block}.fab{display:none!important}}
+.chat{background:var(--sf);border:1px solid var(--line);border-radius:16px;height:100%;display:flex;flex-direction:column;overflow:hidden}
+.chat-h{padding:12px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.chat-h .logo{width:30px;height:30px}
+.chat-h small{color:var(--mute);display:block;font-size:11.5px}
+.close{margin-left:auto;display:none;border:0;background:none;font-size:20px}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.m{max-width:90%;padding:9px 12px;border-radius:14px;background:var(--sf2)}
+.m.u{align-self:flex-end;background:var(--navy);color:var(--on-navy)}
+.mini{display:flex;align-items:center;gap:8px;background:var(--sf);border:1px solid var(--line);border-radius:10px;padding:6px;margin-top:6px}
+.mini .e{font-size:22px}.mini div{flex:1;min-width:0;font-size:12.5px}.mini b{display:block}
+.mini select{flex:none;width:auto;padding:4px}
+.qs{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 8px}
+.qs button{border:1px solid var(--line);background:var(--sf2);border-radius:99px;padding:5px 10px;font-size:12px}
+.in{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}
+.in input{flex:1;border:1px solid var(--line);background:var(--sf2);color:var(--ink);border-radius:99px;padding:10px 14px;font:inherit;min-width:0}
+.send{width:40px;border:0;border-radius:50%;background:var(--navy);color:var(--on-navy)}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;background:var(--navy);color:var(--on-navy);border:0;border-radius:99px;padding:14px 18px;font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.25);display:flex;gap:8px;align-items:center}
+.fab:before{content:"";width:9px;height:9px;border-radius:50%;background:var(--amber)}
+@media(max-width:959px){
+ aside.open{display:block;position:fixed;inset:0;z-index:40;height:auto;padding:0;background:var(--bg)}
+ aside.open .chat{border-radius:0;border:0}.close{display:block}
+}
+/* drawer */
+.dr{position:fixed;inset:0;z-index:50;display:none;background:rgba(5,10,20,.5)}
+.dr.open{display:flex;justify-content:flex-end}
+.pan{background:var(--sf);width:min(400px,100%);height:100%;display:flex;flex-direction:column;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
+.pan h2{margin:0 0 10px;display:flex;justify-content:space-between}
+.items{flex:1;overflow:auto}
+.li{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.li div{flex:1}.li small{color:var(--mute)}
+.q{display:flex;align-items:center;gap:6px}.q button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:var(--sf2)}
+.tot{display:flex;justify-content:space-between;font-weight:800;font-size:16px;padding:12px 0}
+.quote{background:var(--navy);color:var(--on-navy);border:0;border-radius:10px;padding:12px;font-weight:800}
+.empty{color:var(--mute);padding:20px 0}
+.toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:var(--navy);color:var(--on-navy);padding:8px 14px;border-radius:99px;z-index:60;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">GH</div>
+ <div class="brand"><b>GH Max Davao</b><span>Browse the shelves or ask Max</span></div>
+ <div class="sp"></div>
+ <button class="basket" id="bk">Basket <i id="cnt">0</i></button>
+</header>
+
+<div class="wrap">
+ <main>
+  <nav class="cats" id="cats" aria-label="Categories"></nav>
+  <div id="shop"></div>
+ </main>
+ <aside id="chat">
+  <div class="chat">
+   <div class="chat-h"><div class="logo">MX</div><div><b>Max</b><small>Ask in Bisaya or English</small></div><button class="close" id="cl" aria-label="Close chat">×</button></div>
+   <div class="msgs" id="msgs"></div>
+   <div class="qs" id="qs"></div>
+   <form class="in" id="f"><input id="t" placeholder="Ask Max: “naa moy lapis?”" autocomplete="off"><button class="send" aria-label="Send">↑</button></form>
+  </div>
+ </aside>
+</div>
+<button class="fab" id="fab">Ask Max</button>
+
+<div class="dr" id="dr"><div class="pan">
+ <h2>Your basket <button class="close" style="display:block" id="dc" aria-label="Close basket">×</button></h2>
+ <div class="items" id="items"></div>
+ <div class="tot"><span>Total</span><span id="tot">₱0</span></div>
+ <button class="quote" id="qt">Generate official quote</button>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const C=[["Office & School","✏️"],["Cleaning","🧴"],["Gift & Occasion","🎁"],["Arts & Craft","🎨"],["Sports, Music & Fitness","🏋️"],["Furniture","🪑"],["Hardware","🔨"],["Appliance & Accessory","🔌"]];
+const U=(p,b,r)=>[["PC",p],...(b?[["BX12",b]]:[]),...(r?[["REAM",r]]:[])];
+// Sample data: replace names, units and prices with live stock
+const P=[
+["Dong-A Gel Pen",0,"🖊️",U(18,200),"pen pens ballpen"],["Pencil No. 2",0,"✏️",U(8,90),"pencil lapis"],["Copy Paper A4 70gsm",0,"📄",[["REAM",235],["BOX",1150]],"paper bond"],["Spiral Notebook",0,"📓",U(35,400),"notebook"],
+["Green Cross Alcohol 500ml",1,"🧴",U(68,780),"alcohol"],["Zonrox Bleach 1L",1,"🧼",U(54,610),"bleach"],["Dishwashing Liquid",1,"🫧",U(42,480),"sabon dishwash"],
+["Gift Wrap Roll",2,"🎀",U(25,280),"gift wrap"],["Greeting Card",2,"💌",U(30,340),"card"],["Party Balloons Pack",2,"🎈",U(45,500),"balloon lobo"],
+["Watercolor Set 12",3,"🎨",U(120,1350),"watercolor paint"],["Construction Paper",3,"📑",U(6,70),"colored paper"],["Glue Stick",3,"🧷",U(22,250),"glue"],
+["Yoga Mat",4,"🧘",U(350,0),"yoga mat"],["Jump Rope",4,"🪢",U(95,1050),"rope"],["Harmonica",4,"🎵",U(260,0),"music"],
+["Plastic Monobloc Chair",5,"🪑",U(390,0),"chair"],["Study Table",5,"🛋️",U(1850,0),"table desk"],["Storage Cabinet",5,"🗄️",U(2400,0),"cabinet"],
+["Claw Hammer",6,"🔨",U(185,0),"hammer martilyo"],["Screwdriver Set",6,"🪛",U(220,0),"screwdriver"],["Masking Tape",6,"📏",U(38,420),"tape"],
+["Extension Cord 3m",7,"🔌",U(260,0),"extension"],["Electric Fan 16in",7,"🌀",U(1450,0),"fan"],["LED Bulb 9W",7,"💡",U(75,840),"bulb ilaw"]
+].map((p,i)=>({id:i,n:p[0],c:p[1],e:p[2],u:p[3],k:p[0].toLowerCase()+" "+p[4]}));
+const $=s=>document.querySelector(s),peso=n=>"₱"+n.toLocaleString("en-PH",{maximumFractionDigits:0});
+let cat=-1,bask=[];
+const sel={};
+function card(p,mini){
+ const o=p.u.map((u,i)=>`<option value="${i}">${u[0]} · ${peso(u[1])}</option>`).join("");
+ if(mini)return `<div class="mini"><span class="e">${p.e}</span><div><b>${p.n}</b></div><select data-s="${p.id}" aria-label="Unit">${o}</select><button class="add" data-a="${p.id}">Add</button></div>`;
+ return `<article class="card"><div class="ph">${p.e}</div><h3>${p.n}</h3><div class="price" data-pr="${p.id}">${peso(p.u[0][1])}</div><div class="row"><select data-s="${p.id}" aria-label="Unit">${o}</select><button class="add" data-a="${p.id}">Add</button></div><button class="ask" data-q="${p.id}">Ask Max about this</button></article>`;
+}
+function render(){
+ $("#cats").innerHTML=`<button class="chip" aria-pressed="${cat<0}" data-c="-1">All</button>`+C.map((c,i)=>`<button class="chip" aria-pressed="${cat==i}" data-c="${i}">${c[1]} ${c[0]}</button>`).join("");
+ $("#shop").innerHTML=C.map((c,i)=>cat>=0&&cat!=i?"":`<section class="sec"><h2>${c[0]} <small>${P.filter(p=>p.c==i).length} items</small></h2><div class="grid">${P.filter(p=>p.c==i).map(p=>card(p)).join("")}</div></section>`).join("");
+}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("show"),1400)}
+function add(id,ui){
+ const p=P[id],u=p.u[ui],f=bask.find(b=>b.id==id&&b.ui==ui);
+ f?f.q++:bask.push({id,ui,q:1});upd();toast(`Added ${p.n} (${u[0]})`);
+}
+function upd(){
+ $("#cnt").textContent=bask.reduce((a,b)=>a+b.q,0);
+ const t=bask.reduce((a,b)=>a+b.q*P[b.id].u[b.ui][1],0);$("#tot").textContent=peso(t);
+ $("#items").innerHTML=bask.length?bask.map((b,i)=>`<div class="li"><span style="font-size:26px">${P[b.id].e}</span><div><b>${P[b.id].n}</b><br><small>${P[b.id].u[b.ui][0]} · ${peso(P[b.id].u[b.ui][1])}</small></div><div class="q"><button data-m="${i}" aria-label="Less">−</button>${b.q}<button data-p="${i}" aria-label="More">+</button></div></div>`).join(""):`<p class="empty">Nothing here yet. Add items from the shelves or from Max.</p>`;
+}
+function say(h,u){const d=document.createElement("div");d.className="m"+(u?" u":"");d.innerHTML=h;$("#msgs").appendChild(d);$("#msgs").scrollTop=1e9}
+function ask(q){
+ say(q.replace(/</g,"&lt;"),1);
+ const w=q.toLowerCase().replace(/[^a-z0-9 ]/g," ").split(/\s+/).filter(x=>x.length>2&&!["have","naa","moy","you","the","gel","there","any"].includes(x));
+ let hits=P.filter(p=>w.some(x=>p.k.includes(x)));
+ const ci=C.findIndex(c=>q.toLowerCase().includes(c[0].split(",")[0].split(" ")[0].toLowerCase()));
+ if(!hits.length&&ci>=0)hits=P.filter(p=>p.c==ci);
+ setTimeout(()=>{
+  if(!hits.length)say("I couldn’t find that. Try another name, or browse the categories on the left.");
+  else say(`Yes, we have ${hits.length} match${hits.length>1?"es":""}. Pick a unit and add it, or keep browsing.`+hits.slice(0,4).map(p=>card(p,1)).join(""));
+ },350);
+}
+document.addEventListener("click",e=>{
+ const t=e.target.closest("button");if(!t)return;const d=t.dataset;
+ if(d.c!==undefined){cat=+d.c;render();scrollTo({top:0,behavior:"smooth"})}
+ if(d.a!==undefined){const s=t.closest("[data-sel],.card,.mini").querySelector("select");add(+d.a,+s.value)}
+ if(d.q!==undefined){openChat();ask("Tell me about "+P[+d.q].n)}
+ if(d.p!==undefined){bask[+d.p].q++;upd()}
+ if(d.m!==undefined){const b=bask[+d.m];if(--b.q<1)bask.splice(+d.m,1);upd()}
+});
+document.addEventListener("change",e=>{const s=e.target;if(s.dataset.s&&s.closest(".card")){$(`[data-pr="${s.dataset.s}"]`).textContent=peso(P[s.dataset.s].u[s.value][1])}});
+const openChat=()=>$("#chat").classList.add("open");
+$("#fab").onclick=openChat;$("#cl").onclick=()=>$("#chat").classList.remove("open");
+$("#bk").onclick=()=>$("#dr").classList.add("open");$("#dc").onclick=()=>$("#dr").classList.remove("open");
+$("#dr").onclick=e=>{if(e.target.id=="dr")e.target.classList.remove("open")};
+$("#qt").onclick=()=>{$("#dr").classList.remove("open");openChat();say(bask.length?`Your quote is ready: ${bask.length} line item${bask.length>1?"s":""}, total ${$("#tot").textContent}. A staff member will confirm stock and pricing.`:"Your basket is empty. Add something first.")};
+$("#f").onsubmit=e=>{e.preventDefault();const v=$("#t").value.trim();if(v){ask(v);$("#t").value=""}};
+$("#qs").innerHTML=["Do you have pens?","Naa moy lapis?","Do you have Green Cross alcohol?"].map(q=>`<button type="button">${q}</button>`).join("");
+$("#qs").onclick=e=>{if(e.target.tagName=="BUTTON")ask(e.target.textContent)};
+say("Hi, I’m Max. Browse the categories, or ask me for any item in Bisaya or English. Items you add show up in your basket.");
+render();upd();
+</script>
+</body>
+</html>
